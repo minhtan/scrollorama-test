@@ -18,6 +18,23 @@ section#block1{
 footer{
 	background-color: yellow;
 }
+.story{
+	position: relative;
+	margin: 0 auto;
+    min-width: 980px;
+    width: 980px;
+    height: 100%;
+}
+.bg{
+	background: url(../images/pika.png) no-repeat fixed;
+    position: absolute;
+    background-position: center;
+    z-index: 200;
+    top: 0;
+    left: 30%;
+    width: 360px;
+    height: 100%;
+}
 .nav{
 	position: fixed;
 	top: 0;
