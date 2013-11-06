@@ -21,38 +21,38 @@ $(document).ready(function() {
     var deck = new $.scrolldeck({
         buttons: '.nav li a',
         slides: '.block',
-        duration: 800,
+        duration: 1200,
         easing: 'easeInOutExpo',
         offset: 0
     });
 
     //snapWindow
-    // $('.scrollblock .snap').windows({
-    //     snapping: true,
-    //     snapSpeed: 800,
-    //     snapInterval: 1200,
-    //     onScroll: function(scrollPos){
-    //         // scrollPos:Number
-    //     },
-    //     onSnapComplete: function($el){
-    //         // after window ($el) snaps into place
-    //     },
-    //     onWindowEnter: function($el){
-    //         // when new window ($el) enters viewport
-    //     }
-    // });
+    $('.scrollblock .snap').windows({
+        snapping: true,
+        snapSpeed: 800,
+        snapInterval: 1200,
+        onScroll: function(scrollPos){
+            // scrollPos:Number
+        },
+        onSnapComplete: function($el){
+            // after window ($el) snaps into place
+        },
+        onWindowEnter: function($el){
+            // when new window ($el) enters viewport
+        }
+    });
     
     //panelsnap
-    $('body').panelSnap({
-        $menu: false,
-        menuSelector: 'a',
-        panelSelector: 'section',
-        namespace: '.panelSnap',
-        onSnapStart: function(){},
-        onSnapFinish: function(){},
-        directionThreshold: 50,
-        slideSpeed: 600
-    });
+    // $('body').panelSnap({
+    //     $menu: false,
+    //     menuSelector: 'a',
+    //     panelSelector: 'section',
+    //     namespace: '.panelSnap',
+    //     onSnapStart: function(){},
+    //     onSnapFinish: function(){},
+    //     directionThreshold: 50,
+    //     slideSpeed: 600
+    // });
 
     //parallax
     //.parallax(xPosition, adjuster, inertia, outerHeight) options:
@@ -62,7 +62,7 @@ $(document).ready(function() {
     //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
     // $('#header').parallax("50%", 0.1);
     // $('#block1').parallax("50%", 0.1);
-    // $('.bg').parallax("50%", 0.4);
+    $('.bg').parallax("50%", 0.4);
     // $('#footer').parallax("50%", 0.3);
 
     //inview
@@ -80,6 +80,6 @@ $(document).ready(function() {
         blocks:'.block',
         enablePin:false
     });
-    // best to use fly-in effect with scroll desk 
-    // scrollorama.animate('#block1 .bg',{duration:600, property:'left', start:'-100%', end:'0%', easing:'easeInOutExpo'});
+    // best to use fly-in effect with scroll desk when element has 100% width
+    scrollorama.animate('#block1 .article',{duration:800, property:'left', start:'-100%', end:'0%', easing:'easeInOutExpo'});
 });
