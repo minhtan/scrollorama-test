@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //scroll to
+    //scroll to - no need since scrolldesk already implimented the functions
     // $('#toHeader').click(function(){
     // 	$.scrollTo( $('header'), 800 );
     // });
@@ -10,41 +10,60 @@ $(document).ready(function() {
     // 	$.scrollTo( $('footer'), 800 );
     // });
 
-    //calculate height
-    var winHeight = $(window).height();
-    $('.story').css('min-height', winHeight);
+    //localScroll - no need since scrolldesk already implimented the functions
+    // $('.scrollblock').localScroll(800);
 
-    //snapWindow
-    $('.scrollblock .block').windows({
-        snapping: true,
-        snapSpeed: 800,
-        snapInterval: 1100,
-        onScroll: function(scrollPos){
-            // scrollPos:Number
-        },
-        onSnapComplete: function($el){
-            // after window ($el) snaps into place
-        },
-        onWindowEnter: function($el){
-            // when new window ($el) enters viewport
-        }
+    //calculate height of each block (=window height)
+    var winHeight = $(window).height();
+    $('.story').css('height', winHeight);
+
+    //scroll deck 
+    var deck = new $.scrolldeck({
+        buttons: '.nav li a',
+        slides: '.block',
+        duration: 800,
+        easing: 'easeInOutExpo',
+        offset: 0
     });
 
-    //localScroll
-    $('.scrollblock').localScroll(800);
-
-    $('#header').parallax("50%", 0.1);
-    $('#block1').parallax("50%", 0.1);
-    $('.bg').parallax("50%", 0.4);
-    $('#footer').parallax("50%", 0.3);
-
+    //snapWindow
+    // $('.scrollblock .snap').windows({
+    //     snapping: true,
+    //     snapSpeed: 800,
+    //     snapInterval: 1200,
+    //     onScroll: function(scrollPos){
+    //         // scrollPos:Number
+    //     },
+    //     onSnapComplete: function($el){
+    //         // after window ($el) snaps into place
+    //     },
+    //     onWindowEnter: function($el){
+    //         // when new window ($el) enters viewport
+    //     }
+    // });
+    
+    //panelsnap
+    $('body').panelSnap({
+        $menu: false,
+        menuSelector: 'a',
+        panelSelector: 'section',
+        namespace: '.panelSnap',
+        onSnapStart: function(){},
+        onSnapFinish: function(){},
+        directionThreshold: 50,
+        slideSpeed: 600
+    });
 
     //parallax
-    var $window = $(window);
-    var $header = $('#header');
-    var $block1 = $('#block1');
-    var $footer = $('#footer');
-    var pika = $("#block1 .bg");
+    //.parallax(xPosition, adjuster, inertia, outerHeight) options:
+    //xPosition - Horizontal position of the element
+    //adjuster - y position to start from
+    //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+    //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+    // $('#header').parallax("50%", 0.1);
+    // $('#block1').parallax("50%", 0.1);
+    // $('.bg').parallax("50%", 0.4);
+    // $('#footer').parallax("50%", 0.3);
 
     //inview
     $('#header, #block1, #footer').bind('inview', function (event, visible) {
@@ -56,26 +75,11 @@ $(document).ready(function() {
         }
     });
 
-    function newPos(x, winHeight, pos, adjuster, inertia){
-    	return x + "% " + (-((winHeight + pos) - adjuster) * inertia)  + "px";
-    }
-    function Move(){
-    	var pos = $window.scrollTop();
-    	if($header.hasClass("inview")){
-    	    $header.css({'backgroundPosition': newPos(50, windowHeight, pos, 900, 0.3)});
-    	}
-    	if($block1.hasClass("inview")){
-    	    $block1.css({'backgroundPosition': newPos(50, windowHeight, pos, 900, 0.3)});
-    	    pika.css({'backgroundPosition': newPos(50, windowHeight, pos, 900, 0.3)});
-    	}
-    	if($footer.hasClass("inview")){
-    	    $footer.css({'backgroundPosition': newPos(50, windowHeight, pos, 900, 0.3)});
-    	}
-	}
-});
-
-$(window).resize(function(){
-	//calculate height
-    var winHeight = $(window).height();
-    $('.story').css('min-height', winHeight);
+    //scrollorama
+    var scrollorama = $.scrollorama({
+        blocks:'.block',
+        enablePin:false
+    });
+    // best to use fly-in effect with scroll desk 
+    // scrollorama.animate('#block1 .bg',{duration:600, property:'left', start:'-100%', end:'0%', easing:'easeInOutExpo'});
 });
