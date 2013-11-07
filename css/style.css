@@ -41,25 +41,24 @@ section#footer{
 	margin: 0 auto;
     min-width: 980px;
     width: 980px;
+    z-index: 2;
 }
 .thedog{
 	bottom: 4%;
-	right: 26%;
+	right: 150%;
 	position: absolute;
 }
 .thedog img{
 	width: 175px;
 }
 .bg{
-	background: url(../images/test.jpg) no-repeat;
     position: absolute;
-    background-size: cover;
-    background-position: 50% 0;
-    background-attachment: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 20%;
+    left: 80%;
+    z-index: 1;
+}
+.bg img{
+	width: 150px;
 }
 .nav{
 	z-index: 2000;
@@ -76,4 +75,8 @@ section#footer{
 }
 .nav ul li a.current{
 	color: green;
+}
+.detector{
+	position: absolute;
+	left: 0;
 }
