@@ -1,6 +1,9 @@
 *{
 	margin: 0;
 	padding: 0;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 html, body{
 	height: 100%;
@@ -23,9 +26,12 @@ section#header{
 }
 section#block1{
 	background: green;
-}
-section#block2{
-	background-color: violet;
+	background: url(../images/test.jpg) no-repeat;
+	background-size: cover;
+    background-position: 50% 0;
+    background-attachment: fixed;
+    top: 0;
+    left: 0;
 }
 section#footer{
 	background-color: yellow;
@@ -36,11 +42,13 @@ section#footer{
     min-width: 980px;
     width: 980px;
 }
-.article{
-	margin: 0 auto;
-	background: url(../images/pika.png) 0 50% no-repeat;
-    width: 360px;
-    height: 100%;
+.thedog{
+	bottom: 4%;
+	right: 26%;
+	position: absolute;
+}
+.thedog img{
+	width: 175px;
 }
 .bg{
 	background: url(../images/test.jpg) no-repeat;

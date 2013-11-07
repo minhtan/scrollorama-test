@@ -61,8 +61,7 @@ $(document).ready(function() {
     //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
     //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
     // $('#header').parallax("50%", 0.1);
-    // $('#block1').parallax("50%", 0.1);
-    $('.bg').parallax("50%", 0.4);
+    // $('#block1').parallax("50%", 0.4);
     // $('#footer').parallax("50%", 0.3);
 
     //inview
@@ -81,5 +80,5 @@ $(document).ready(function() {
         enablePin:false
     });
     // best to use fly-in effect with scroll desk when element has 100% width
-    scrollorama.animate('#block1 .article',{duration:800, property:'left', start:'-100%', end:'0%', easing:'easeInOutExpo'});
+    scrollorama.animate('#block1 .thedog',{duration:600, property:'right', start:'100%', end:'26%'});
 });
